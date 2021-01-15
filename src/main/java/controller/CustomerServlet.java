@@ -58,6 +58,12 @@ public class CustomerServlet extends HttpServlet {
                 case "delete":
                     deleteCustomer(request,response);
                     break;
+                case "checkout":
+                    checkOut(request,response);
+                    break;
+                case "search":
+                    searchCustomer(request,response);
+                    break;
                 default:
                     listCustomer(request,response);
             }
@@ -109,9 +115,19 @@ public class CustomerServlet extends HttpServlet {
         String cmnd = request.getParameter("cmnd");
         String checkin = request.getParameter("checkin");
         String checkout = request.getParameter("checkout");
-        Customer book = new Customer(id, room, name,cmnd,checkin,checkout);
-        customerDAO.updateCustomer(book);
+        Customer customer = new Customer(id, room, name, cmnd, checkin, checkout);
+        customerDAO.updateCustomer(customer);
         RequestDispatcher dispatcher = request.getRequestDispatcher("customer/edit.jsp");
+        dispatcher.forward(request,response);
+    }
+
+    private void checkOut(HttpServletRequest request,HttpServletResponse response)
+        throws SQLException, IOException, ServletException{
+        int id = Integer.parseInt(request.getParameter("id"));
+        String checkout = request.getParameter("checkout");
+        Customer customer = customerDAO.selectCustomer(id);
+        customerDAO.checkOut(customer);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/checkOut.jsp");
         dispatcher.forward(request,response);
     }
 
@@ -122,6 +138,16 @@ public class CustomerServlet extends HttpServlet {
         List<Customer> listCustomer = customerDAO.selectAllCustomer();
         request.setAttribute("listCustomer", listCustomer);
         RequestDispatcher dispatcher = request.getRequestDispatcher("customer/list.jsp");
+        dispatcher.forward(request,response);
+    }
+
+    private void searchCustomer(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException{
+        String room = request.getParameter("search");
+
+        List<Customer> customer = customerDAO.searchCustomer(room);
+        request.setAttribute("listCustomer", customer);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/search.jsp");
         dispatcher.forward(request,response);
     }
 }

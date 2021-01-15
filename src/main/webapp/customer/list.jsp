@@ -61,6 +61,7 @@
                 <td>
                     <a href="/customer?action=edit&id=${customer.id}" class="btn btn-warning">Edit</a>
                     <a href="/customer?action=delete&id=${customer.id}" class="btn badge-danger">Delete</a>
+                    <a href="/customer?action=checkout&id=${customer.id}" class="btn badge-light">Check-Out</a>
                 </td>
             </tr>
         </c:forEach>

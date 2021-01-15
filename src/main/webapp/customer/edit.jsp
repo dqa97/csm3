@@ -69,7 +69,7 @@
     <form action="/customer?action=edit" method="post">
         <table class="table table-striped table-dark">
             <c:if test="${customer != null}">
-            <input type="hidden" name="id" value="<c:out value='<${customer.id}'/>"/>
+            <input type="hidden" name="id" value="<c:out value='${customer.id}'/>"/>
             </c:if>
             <tr>
                 <th style="color: #f8f9fa">Room :</th>
@@ -86,19 +86,19 @@
             <tr>
                 <th style="color: #f8f9fa">Customer Cmnd :</th>
                 <td>
-                    <input type="text" name="email" size="45" value="<c:out value='${customer.cmnd}'/>"/>
+                    <input type="text" name="cmnd" size="45" value="<c:out value='${customer.cmnd}'/>"/>
                 </td>
             </tr>
             <tr>
                 <th style="color: #f8f9fa">Checkin :</th>
                 <td>
-                    <input type="text" name="country" size="45" value="<c:out value='${customer.checkin}'/>"/>
+                    <input type="text" name="checkin" size="45" value="<c:out value='${customer.checkin}'/>"/>
                 </td>
             </tr>
             <tr>
                 <th style="color: #f8f9fa">Checkout :</th>
                 <td>
-                    <input type="text" name="country" size="45" value="<c:out value='${customer.checkout}'/>"/>
+                    <input type="text" name="checkout" size="45" value="<c:out value='${customer.checkout}'/>"/>
                 </td>
             </tr>
             <tr>

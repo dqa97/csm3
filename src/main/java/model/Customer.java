@@ -10,6 +10,8 @@ public class Customer {
 
     public Customer(){}
 
+
+
     public Customer(String room, String name, String cmnd, String checkin, String checkout){
         super();
         this.room = room;
@@ -26,6 +28,30 @@ public class Customer {
         this.name = name;
         this.cmnd = cmnd;
         this.checkin = checkin;
+        this.checkout = checkout;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCmnd(String cmnd) {
+        this.cmnd = cmnd;
+    }
+
+    public void setCheckin(String checkin) {
+        this.checkin = checkin;
+    }
+
+    public void setCheckout(String checkout) {
         this.checkout = checkout;
     }
 
